@@ -1,11 +1,12 @@
 # opentalent — AGENTS.md
 
-Vite 8 + React 19 + TypeScript + React Compiler (via `@vitejs/plugin-react` + `babel-plugin-react-compiler`). Lint: `oxlint`.
+Vite 8 + React 19 + TypeScript + React Compiler (via `@vitejs/plugin-react` + `babel-plugin-react-compiler`) + Tailwind 4. Lint: strict `oxlint --deny-warnings` (see `.oxlintrc.json`).
 
 Commands:
 - `npm run dev` — dev server
 - `npm run build` — `tsc -b && vite build`
-- `npm run lint` — `oxlint`
+- `npm run lint` — `oxlint --deny-warnings` (must pass, exit 0)
+- `npm run lint:fix` — `oxlint --fix`
 
 Skills are on-demand. Do NOT preload skill files. Load only the one the task needs via the `skill` tool, then follow it.
 

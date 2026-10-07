@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Results
+results/
+# Dedicated Chrome automation profile (remote debugging lives here)
+.chrome-automation/

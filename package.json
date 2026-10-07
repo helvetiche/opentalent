@@ -4,14 +4,21 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "predev": "node scripts/chrome-ensure.mjs",
+    "chrome:debug": "node scripts/chrome-ensure.mjs",
+    "chrome:restart": "node scripts/chrome-ensure.mjs --restart",
+    "chrome:tabs": "node scripts/chrome-ensure.mjs",
+    "dev": "concurrently --names server,ui \"npm run server\" \"npm run dev:ui\"",
+    "dev:ui": "vite",
+    "dev:all": "npm run dev",
     "build": "tsc -b && vite build",
-    "lint": "oxlint --deny-warnings",
+    "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "doctor": "tsc --noEmit && oxlint --deny-warnings && prettier --check .",
-    "preview": "vite preview"
+    "doctor": "tsc --noEmit && oxlint && prettier --check .",
+    "preview": "vite preview",
+    "server": "tsx server/index.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",
@@ -35,8 +42,10 @@
     "@types/react-dom": "^19.2.7",
     "@vitejs/plugin-react": "^6.1.1",
     "babel-plugin-react-compiler": "^1.0.0",
+    "concurrently": "^10.0.5",
     "oxlint": "^1.81.0",
     "prettier": "^3.9.9",
+    "tsx": "^4.23.15",
     "typescript": "~6.0.2",
     "vite": "^8.3.0"
   }

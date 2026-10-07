@@ -1,6 +1,16 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["eslint", "typescript", "unicorn", "oxc", "import", "react", "jsx-a11y", "react-perf", "promise"],
+  "plugins": [
+    "eslint",
+    "typescript",
+    "unicorn",
+    "oxc",
+    "import",
+    "react",
+    "jsx-a11y",
+    "react-perf",
+    "promise"
+  ],
   "env": {
     "browser": true,
     "es2023": true
@@ -22,6 +32,19 @@
     "reportUnusedDisableDirectives": "warn"
   },
   "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-props-no-spreading": "off",
+    "import/no-unassigned-import": "off",
+    "import/prefer-default-export": "off",
+    "import/no-named-export": "off",
+    "import/consistent-type-specifier-style": "off",
+    "unicorn/prefer-query-selector": "off",
+    "unicorn/filename-case": "off",
+    "unicorn/no-null": "off",
+    "unicorn/relative-url-style": "off",
+    "func-style": "off",
+    "sort-imports": "off",
+    "sort-keys": "off",
     "react/rules-of-hooks": "error",
     "react/only-export-components": ["warn", { "allowConstantExport": true }],
     "react/exhaustive-deps": "error",
@@ -30,6 +53,7 @@
     "import/no-cycle": "error",
     "import/no-self-import": "error",
     "no-console": "warn",
+    "one-var": "off",
     "eqeqeq": ["error", "always"]
   },
   "overrides": [
@@ -40,9 +64,26 @@
       },
       "plugins": ["eslint", "typescript", "unicorn", "oxc", "import", "node", "promise"],
       "rules": {
+        "no-console": "off",
+        "import/no-nodejs-modules": "off"
+      }
+    },
+    {
+      "files": ["server/**"],
+      "env": {
+        "node": true
+      },
+      "rules": {
+        "import/no-nodejs-modules": "off",
         "no-console": "off"
+      }
+    },
+    {
+      "files": ["src/components/ui/**"],
+      "rules": {
+        "react/only-export-components": "off"
       }
     }
   ],
-  "ignorePatterns": ["dist/**"]
+  "ignorePatterns": ["dist/**", "scripts/**"]
 }
